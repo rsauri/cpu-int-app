@@ -1,0 +1,22 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-intensive-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cpu-intensive-app
+  template:
+    metadata:
+      labels:
+        app: cpu-intensive-app
+    spec:
+      containers:
+      - name: cpu-intensive-app
+        image: public.ecr.aws/m6d7o6n7/cpu-int-app:latest
+        ports:
+        - containerPort: 8080
+
